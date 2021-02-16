@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+
+
+# Comments
+# Felt like I was able to extrapolate from examples how to make this section work, some discussion of code and URDFs in class would have been very helpful before doing this RyanLushAssignment1Robot
+
+<robot name="RyanLushAssignment1Robot">
+  <link name="base">
+    <visual>
+      <geometry> <box size="0.2 0.2 0.2" /> </geometry>
+      <material name="green"><color rgba="0 1 0 1" /> </material>
+    </visual>
+  </link>
+
+  <link name="link1">
+    <inertial>
+      <origin xyz="0.0 0.0 0.5" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia = ixx="1" ixy="0" ixz="0" iyy="0.33" iyz="0" izz="1"
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.5" />
+      <geometry> <box size="0.05 0.05 1.0" /> </geometry>
+      <material name="blue"> <color rgba="0 0 1 1" /> </material>
+    </visual>
+  </link>
+
+  <joint name="joint0" type="revolute">
+    <parent link="base" />
+    <child link="link1" />
+    <origin xyz="0.0 0.0 0.1" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <dynamics damping="0.1" />
+  </joint>
+
+  <link name="link2">
+    <inertial>
+      <origin xyz="0.0 0.0 0.5" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia = ixx="1" ixy="0" ixz="0" iyy="0.33" iyz="0" izz="1"
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.5" />
+      <geometry> <box size="0.05 0.05 1.0" /> </geometry>
+      <material name="red"> <color rgba="1 0 0 1" /> </material>
+    </visual>
+  </link>
+
+  <joint name="joint1" type="revolute">
+    <parent link="link1" />
+    <child link="link2" />
+    <origin xyz="0.0 0.0 1.0" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <dynamics damping="0.1" />
+  </joint>
+
+  <link name="link3">
+    <inertial>
+      <origin xyz="0.5 0.0 0.0" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia = ixx="1" ixy="0" ixz="0" iyy="0.33" iyz="0" izz="1"
+    </inertial>
+    <visual>
+      <origin xyz="0.5 0.0 0.0" />
+      <geometry> <box size="1.0 0.05 0.05" /> </geometry>
+      <material name="blue"> <color rgba="0 0 1 1" /> </material>
+    </visual>
+  </link>
+
+  <joint name="joint2" type="revolute">
+    <parent link="link2" />
+    <child link="link3" />
+    <origin xyz="0.0 0.0 1.0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <dynamics damping="0.1" />
+  </joint>
+
+  <link name="link4">
+    <inertial>
+      <origin xyz="0.0 0.0 0.5" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia = ixx="1" ixy="0" ixz="0" iyy="0.33" iyz="0" izz="1"
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.5" />
+      <geometry> <box size="0.05 0.05 1.0" /> </geometry>
+      <material name="red"> <color rgba="1 0 0 1" /> </material>
+    </visual>
+  </link>
+
+  <joint name="joint3" type="revolute">
+    <parent link="link3" />
+    <child link="link4" />
+    <origin xyz="1.0 0.0 0.0" rpy="0 0 0" />
+    <axis xyz="0 1 0" />
+    <dynamics damping="0.1" />
+  </joint>
+
+  # branch point
+
+  <link name="link5.1">
+    <inertial>
+      <origin xyz="0.0 0.5 0.0" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia = ixx="1" ixy="0" ixz="0" iyy="0.33" iyz="0" izz="1"
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.5 0.0" />
+      <geometry> <box size="0.05 1.0 0.05" /> </geometry>
+      <material name="blue"> <color rgba="0 0 1 1" /> </material>
+    </visual>
+  </link>
+
+  <link name="link5.2">
+    <inertial>
+      <origin xyz="0.0 -0.5 0.0" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia = ixx="1" ixy="0" ixz="0" iyy="0.33" iyz="0" izz="1"
+    </inertial>
+    <visual>
+      <origin xyz="0.0 -0.5 0.0" />
+      <geometry> <box size="0.05 1.0 0.05" /> </geometry>
+      <material name="green"> <color rgba="0 1 0 1" /> </material>
+    </visual>
+  </link>
+
+  <joint name="joint4.1" type="revolute">
+    <parent link="link4" />
+    <child link="link5.1" />
+    <origin xyz="0.0 0.0 1.0" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <dynamics damping="0.1" />
+  </joint>
+
+  <link name="link6.1">
+    <inertial>
+      <origin xyz="0.0 0.0 0.5" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia = ixx="1" ixy="0" ixz="0" iyy="0.33" iyz="0" izz="1"
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.5" />
+      <geometry> <box size="0.05 0.05 1.0" /> </geometry>
+      <material name="green"> <color rgba="0 1 0 1" /> </material>
+    </visual>
+  </link>
+
+  <joint name="joint5.1" type="revolute">
+    <parent link="link5.1" />
+    <child link="link6.1" />
+    <origin xyz="0.0 1.0 0.0" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <dynamics damping="0.1" />
+  </joint>
+
+  <link name="ee1">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia = ixx="1" ixy="0" ixz="0" iyy="0.33" iyz="0" izz="1"
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.0" />
+      <geometry> <box size="0.05 0.05 0.05" /> </geometry>
+      <material name="red"> <color rgba="1 0 0 1" /> </material>
+    </visual>
+  </link>
+
+  <joint name="endjoint1" type="fixed">
+    <parent link="link6.1" />
+    <child link="ee1" />
+    <origin xyz="0.0 0.0 1.0" rpy="0 0 0" />
+  </joint>
+
+  <joint name="joint4.2" type="revolute">
+    <parent link="link4" />
+    <child link="link5.2" />
+    <origin xyz="0.0 0.0 1.0" rpy="0 0 0" />
+    <axis xyz="1 0 0" />
+    <dynamics damping="0.1" />
+  </joint>
+
+  <link name="link6.2">
+    <inertial>
+      <origin xyz="0.5 0.0 0.0" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia = ixx="1" ixy="0" ixz="0" iyy="0.33" iyz="0" izz="1"
+    </inertial>
+    <visual>
+      <origin xyz="0.5 0.0 0.0" />
+      <geometry> <box size="1.0 0.05 0.05" /> </geometry>
+      <material name="green"> <color rgba="0 1 0 1" /> </material>
+    </visual>
+  </link>
+
+  <joint name="joint5.2" type="revolute">
+    <parent link="link5.2" />
+    <child link="link6.2" />
+    <origin xyz="0.0 -1.0 0.0" rpy="0 0 0" />
+    <axis xyz="0 0 1" />
+    <dynamics damping="0.1" />
+  </joint>
+
+  <link name="ee2">
+    <inertial>
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      <mass value="1" />
+      <inertia = ixx="1" ixy="0" ixz="0" iyy="0.33" iyz="0" izz="1"
+    </inertial>
+    <visual>
+      <origin xyz="0.0 0.0 0.0" />
+      <geometry> <box size="0.05 0.05 0.05" /> </geometry>
+      <material name="red"> <color rgba="1 0 0 1" /> </material>
+    </visual>
+  </link>
+
+  <joint name="endjoint2" type="fixed">
+    <parent link="link6.2" />
+    <child link="ee2" />
+    <origin xyz="1.0 0.0 0.0" rpy="0 0 0" />
+  </joint>
